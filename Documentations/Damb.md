@@ -1,6 +1,6 @@
 # Damb UI Library Documentation
 
-## Booting the library
+## Source of the library
 ### yeah ignore that stuff
 ```lua
 local Players = game:GetService("Players")
