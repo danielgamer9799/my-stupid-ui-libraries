@@ -5,8 +5,9 @@ function Library:NewWindow(options)
 	
 	if game.CoreGui:FindFirstChild("Damb") then
 	    game.CoreGui:FindFirstChild("Damb"):Destroy()
+	    print("Found a copy of '"..options.Name.."', destroying copy...")
 	end
-	wait(0.1)
+	wait()
 	local gui = {}
 	do
 		-- StarterGui.ScreenGui
