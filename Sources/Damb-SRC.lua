@@ -1,6 +1,6 @@
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
-local Library = {};
+local Library = {}
 function Library:New(options)
 	local GUI = {}
 	do
