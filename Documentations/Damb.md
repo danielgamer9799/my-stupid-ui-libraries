@@ -238,8 +238,8 @@ return Library
 ```
 ## Creating The Window
 ```lua
-local Window = lib:New({
-   Name = "Damb UI Library"
+local Window = Library:New({
+   Name = "Dum Dum UI Library"
 })
 ```
 ## Creating A Button
