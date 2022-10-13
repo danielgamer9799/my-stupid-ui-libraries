@@ -1,54 +1,18 @@
 local Library = {}
-local runService = game:GetService("RunService")
-local PlayerGui = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 
-function Library:Window(options)
+function Library:NewWindow(options)
+	--all the useless stuff
 	local gui = {}
-	function SmoothDrag(SmoothDragObject)
-	    local UIS = game:GetService("UserInputService")
-            local frame = SmoothDragObject
-
-	 	local dragToggle = nil
-		local dragSpeed = 0.1
-		local dragStart = nil
-		local startPos = nil
-
-		local function updateInput(input)
-			local delta = input.Position - dragStart
-			local position = UDim2.new(startPos.X.Scale,startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-			game:GetService("TweenService"):Create(frame, TweenInfo.new(dragSpeed), {Position = position}):Play()
-		end
-
-		frame.InputBegan:Connect(function(input)
-		if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then
-		dragToggle = true
-		dragStart = input.Position
-		startPos = frame.Position
-		input.Changed:Connect(function()
-				if input.UserInputState == Enum.UserInputState.End then
-					dragToggle = false
-				end
-			end)
-		end
-	end)
-
-		UIS.InputChanged:Connect(function(input)
-			if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-				if dragToggle then
-					updateInput(input)
-					end
-				end
-			end)
-		end
 	do
 		-- StarterGui.ScreenGui
-		gui["1"] = Instance.new("ScreenGui", runService:IsStudio() and PlayerGui or game.CoreGui);
+		gui["1"] = Instance.new("ScreenGui", game:GetService("RunService"):IsStudio() and game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui") or game.CoreGui);
 		gui["1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling;
 
 		-- StarterGui.ScreenGui.Frame
 		gui["2"] = Instance.new("Frame", gui["1"]);
 		gui["2"]["BackgroundColor3"] = Color3.fromRGB(18, 18, 18);
 		gui["2"]["Size"] = UDim2.new(0.1351916342973709, 0, 0.5139859914779663, 0);
+		gui["2"]["ClipsDescendants"] = true;
 		gui["2"]["Position"] = UDim2.new(0, 0, 0.24258288741111755, 0);
 
 		-- StarterGui.ScreenGui.Frame.UICorner
@@ -99,20 +63,206 @@ function Library:Window(options)
 		gui["8"]["Padding"] = UDim.new(0, 6);
 		gui["8"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
 		
-		-- StarterGui.ScreenGui.Frame.NotificationHolder
-		gui["14"] = Instance.new("Frame", gui["1"]);
-		gui["14"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+		-- StarterGui.ScreenGui.Frame.close
+		gui["14"] = Instance.new("ImageButton", gui["2"]);
+		gui["14"]["ZIndex"] = 2;
+		gui["14"]["Image"] = [[rbxassetid://3926305904]];
+		gui["14"]["ImageRectSize"] = Vector2.new(24, 24);
+		gui["14"]["Size"] = UDim2.new(0, 25, 0, 25);
+		gui["14"]["Name"] = [[close]];
+		gui["14"]["ImageRectOffset"] = Vector2.new(284, 4);
+		gui["14"]["Position"] = UDim2.new(0.8402062058448792, 0, 0.0102040721103549, 0);
 		gui["14"]["BackgroundTransparency"] = 1;
-		gui["14"]["Size"] = UDim2.new(1.3041237592697144, 0, 1.9149659872055054, 0);
-		gui["14"]["Position"] = UDim2.new(6.082474231719971, 0, -0.47278910875320435, 0);
-		gui["14"]["Name"] = [[NotificationHolder]];
+
+		-- StarterGui.ScreenGui.Frame.close.LocalScript
+		gui["15"] = Instance.new("LocalScript", gui["14"]);
+
+
+		-- StarterGui.ScreenGui.Frame.menu
+		gui["16"] = Instance.new("ImageButton", gui["2"]);
+		gui["16"]["ZIndex"] = 2;
+		gui["16"]["LayoutOrder"] = 6;
+		gui["16"]["Image"] = [[rbxassetid://3926305904]];
+		gui["16"]["ImageRectSize"] = Vector2.new(36, 36);
+		gui["16"]["Size"] = UDim2.new(0, 25, 0, 25);
+		gui["16"]["Name"] = [[menu]];
+		gui["16"]["ImageRectOffset"] = Vector2.new(604, 684);
+		gui["16"]["Position"] = UDim2.new(0.7113401889801025, 0, 0.010204076766967773, 0);
+		gui["16"]["BackgroundTransparency"] = 1;
+
+		-- StarterGui.ScreenGui.Frame.menu.LocalScript
+		gui["17"] = Instance.new("LocalScript", gui["16"]);
+
+
+		-- StarterGui.ScreenGui.Frame.SmoothDrag
+		gui["18"] = Instance.new("LocalScript", gui["2"]);
+		gui["18"]["Name"] = [[SmoothDrag]];
+
+		-- StarterGui.ScreenGui.NotificationHolder
+		gui["19"] = Instance.new("Frame", gui["1"]);
+		gui["19"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+		gui["19"]["BackgroundTransparency"] = 1;
+		gui["19"]["Size"] = UDim2.new(0.17317073047161102, 0, 0.9597902297973633, 0);
+		gui["19"]["Position"] = UDim2.new(0.8219512104988098, 0, 0, 0);
+		gui["19"]["Name"] = [[NotificationHolder]];
 		
-		-- StarterGui.ScreenGui.Frame.NotificationHolder.UIListLayout
-		gui["20"] = Instance.new("UIListLayout", gui["14"]);
-		gui["20"]["VerticalAlignment"] = Enum.VerticalAlignment.Bottom;
-		gui["20"]["Padding"] = UDim.new(0, 6);
-		gui["20"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
-		
+		-- StarterGui.ScreenGui.NotificationHolder.UIListLayout
+		gui["25"] = Instance.new("UIListLayout", gui["19"]);
+		gui["25"]["VerticalAlignment"] = Enum.VerticalAlignment.Bottom;
+		gui["25"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+
+		-- StarterGui.ScreenGui.OpenFrame
+		gui["26"] = Instance.new("Frame", gui["1"]);
+		gui["26"]["BackgroundColor3"] = Color3.fromRGB(18, 18, 18);
+		gui["26"]["ClipsDescendants"] = true;
+		gui["26"]["Position"] = UDim2.new(0.005574912764132023, 0, 0.9003496766090393, 0);
+		gui["26"]["Visible"] = false;
+		gui["26"]["Name"] = [[OpenFrame]];
+
+		-- StarterGui.ScreenGui.OpenFrame.UICorner
+		gui["27"] = Instance.new("UICorner", gui["26"]);
+
+
+		-- StarterGui.ScreenGui.OpenFrame.UIStroke
+		gui["28"] = Instance.new("UIStroke", gui["26"]);
+		gui["28"]["Color"] = Color3.fromRGB(255, 255, 255);
+		gui["28"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+		-- StarterGui.ScreenGui.OpenFrame.Open
+		gui["29"] = Instance.new("TextButton", gui["26"]);
+		gui["29"]["TextWrapped"] = true;
+		gui["29"]["TextSize"] = 14;
+		gui["29"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+		gui["29"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+		-- gui["29"]["FontFace"] = ;
+		gui["29"]["Size"] = UDim2.new(1, 0, 1, 0);
+		gui["29"]["Name"] = [[Open]];
+		gui["29"]["Text"] = [[Open Minimized UI]];
+		gui["29"]["Font"] = Enum.Font.Ubuntu;
+		gui["29"]["BackgroundTransparency"] = 1;
+
+		-- StarterGui.ScreenGui.OpenFrame.Open.LocalScript
+		gui["2a"] = Instance.new("LocalScript", gui["29"]);
+
+
+		-- StarterGui.ScreenGui.Frame.close.LocalScript
+		local function C_15()
+			local script = gui["15"];
+			script.Parent.MouseButton1Click:Connect(function()
+				local Gui = script.Parent.Parent.Parent
+				local Frame = script.Parent.Parent
+				Frame:TweenSize(
+					UDim2.new(0,0,0,0),
+					Enum.EasingDirection.InOut,
+					Enum.EasingStyle.Sine,
+					1.0,
+					false
+				)
+				wait(1.0 + 0.01)
+				Frame:Destroy()
+			end)
+		end;
+		task.spawn(C_15);
+		-- StarterGui.ScreenGui.Frame.menu.LocalScript
+		local function C_17()
+			local script = gui["17"];
+			script.Parent.MouseButton1Click:Connect(function()
+				local Frame = script.Parent.Parent
+				local GUI = Frame.Parent
+				local OpenFrame = script.Parent.Parent.Parent.OpenFrame
+				Frame:TweenSize(
+					UDim2.new(0.135, 0,0, 0),
+					Enum.EasingDirection.InOut,
+					Enum.EasingStyle.Sine,
+					1.0,
+					false
+				)
+				OpenFrame.Visible = true
+				OpenFrame:TweenSize(
+					UDim2.new(0, 169,0, 46),
+					Enum.EasingDirection.InOut,
+					Enum.EasingStyle.Sine,
+					1.0,
+					false
+				)
+				wait(1.0 + 0.01)
+				Frame.Visible = false
+			end)
+		end;
+		task.spawn(C_17);
+		-- StarterGui.ScreenGui.Frame.SmoothDrag
+		local function C_18()
+			local script = gui["18"];
+			local function SmoothDrag(SmoothDragObject)
+				local UIS = game:GetService("UserInputService")
+				local frame = SmoothDragObject
+
+				local dragToggle = nil
+				local dragSpeed = 0.1
+				local dragStart = nil
+				local startPos = nil
+
+				local function updateInput(input)
+					local delta = input.Position - dragStart
+					local position = UDim2.new(startPos.X.Scale,startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+					game:GetService("TweenService"):Create(frame, TweenInfo.new(dragSpeed), {Position = position}):Play()
+				end
+
+				frame.InputBegan:Connect(function(input)
+					if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then
+						dragToggle = true
+						dragStart = input.Position
+						startPos = frame.Position
+						input.Changed:Connect(function()
+							if input.UserInputState == Enum.UserInputState.End then
+								dragToggle = false
+							end
+						end)
+					end
+				end)
+
+				UIS.InputChanged:Connect(function(input)
+					if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+						if dragToggle then
+							updateInput(input)
+						end
+					end
+				end)
+			end
+
+			SmoothDrag(script.Parent)
+		end;
+		task.spawn(C_18);
+		-- StarterGui.ScreenGui.OpenFrame.Open.LocalScript
+		local function C_2a()
+			local script = gui["2a"];
+			script.Parent.MouseButton1Click:Connect(function()
+				local Frame = script.Parent.Parent.Parent.Frame
+				script.Parent.Parent:TweenSize(
+					UDim2.new(0,0,0,0),
+					Enum.EasingDirection.InOut,
+					Enum.EasingStyle.Sine,
+					1.0,
+					false
+				)
+
+				Frame:TweenSize(
+					UDim2.new(0.135, 0,0.514, 0),
+					Enum.EasingDirection.InOut,
+					Enum.EasingStyle.Sine,
+					1.0,
+					false
+				)
+				Frame.Visible = true
+
+				wait(1.0 + 0.01)
+				script.Parent.Parent.Visible = false
+			end)
+		end;
+		task.spawn(C_2a);
+	end
+	--the buttons, labels and etc
+	do
 		function gui:CreateButton(options)
 			local Button = {}
 			-- StarterGui.ScreenGui.Frame.TabHolder.Button
@@ -145,7 +295,7 @@ function Library:Window(options)
 			Button["c"]["BackgroundTransparency"] = 1;
 
 			-- StarterGui.ScreenGui.Frame.TabHolder.Button.Title.UIPadding
-			Button["d"] = Instance.new("UIPadding", Button["c"]);
+			Button["d"] = Instance.new("UIPadding", gui["c"]);
 			Button["d"]["PaddingTop"] = UDim.new(0, 1);
 			Button["d"]["PaddingRight"] = UDim.new(0, 23);
 			Button["d"]["PaddingBottom"] = UDim.new(0, 1);
@@ -171,6 +321,7 @@ function Library:Window(options)
 		
 		function gui:CreateLabel(options)
 			local Label = {}
+			
 			-- StarterGui.ScreenGui.Frame.TabHolder.Label
 			Label["f"] = Instance.new("Frame", gui["7"]);
 			Label["f"]["BackgroundColor3"] = Color3.fromRGB(44, 44, 44);
@@ -193,8 +344,8 @@ function Library:Window(options)
 			-- Label["12"]["FontFace"] = ;
 			Label["12"]["TextSize"] = 15;
 			Label["12"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-			Label["12"]["Text"] = options.Name
 			Label["12"]["Size"] = UDim2.new(1, 0, 1, 0);
+			Label["12"]["Text"] = options.Name
 			Label["12"]["Name"] = [[Title]];
 			Label["12"]["Font"] = Enum.Font.Ubuntu;
 			Label["12"]["BackgroundTransparency"] = 1;
@@ -210,101 +361,100 @@ function Library:Window(options)
 		
 		function gui:CreateNotification(options)
 			local Notification = {}
-			-- StarterGui.ScreenGui.Frame.NotificationHolder.Notification
-			Notification["15"] = Instance.new("Frame", gui["14"]);
-			Notification["15"]["BackgroundColor3"] = Color3.fromRGB(55, 55, 55);
-			Notification["15"]["Size"] = UDim2.new(0, 250, 0, 100);
-			Notification["15"]["Position"] = UDim2.new(0, 0, 0.8254799246788025, 0);
-			Notification["15"]["Name"] = [[Notification]];
+			-- StarterGui.ScreenGui.NotificationHolder.Notification
+			Notification["1a"] = Instance.new("Frame", gui["19"]);
+			Notification["1a"]["BackgroundColor3"] = Color3.fromRGB(55, 55, 55);
+			Notification["1a"]["Size"] = UDim2.new(0, 250, 0, 100);
+			Notification["1a"]["Position"] = UDim2.new(0, 0, 0.8254799246788025, 0);
+			Notification["1a"]["Name"] = [[Notification]];
 
-			-- StarterGui.ScreenGui.Frame.NotificationHolder.Notification.UICorner
-			Notification["16"] = Instance.new("UICorner", Notification["15"]);
-
-
-			-- StarterGui.ScreenGui.Frame.NotificationHolder.Notification.UIStroke
-			Notification["17"] = Instance.new("UIStroke", Notification["15"]);
-			Notification["17"]["Color"] = Color3.fromRGB(255, 255, 255);
-			Notification["17"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
-
-			-- StarterGui.ScreenGui.Frame.NotificationHolder.Notification.Title
-			Notification["18"] = Instance.new("TextLabel", Notification["15"]);
-			Notification["18"]["TextWrapped"] = true;
-			Notification["18"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-			Notification["18"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-			-- Notification["18"]["FontFace"] = ;
-			Notification["18"]["TextSize"] = 14;
-			Notification["18"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-			Notification["18"]["Size"] = UDim2.new(0, 250, 0, 33);
-			Notification["18"]["Text"] = options.Name;
-			Notification["18"]["Name"] = [[Title]];
-			Notification["18"]["Font"] = Enum.Font.Ubuntu;
-			Notification["18"]["BackgroundTransparency"] = 1;
-
-			-- StarterGui.ScreenGui.Frame.NotificationHolder.Notification.Title.UIPadding
-			Notification["19"] = Instance.new("UIPadding", Notification["18"]);
-			Notification["19"]["PaddingTop"] = UDim.new(0, 1);
-			Notification["19"]["PaddingRight"] = UDim.new(0, 23);
-			Notification["19"]["PaddingBottom"] = UDim.new(0, 1);
-			Notification["19"]["PaddingLeft"] = UDim.new(0, 23);
-
-			-- StarterGui.ScreenGui.Frame.NotificationHolder.Notification.Description
-			Notification["1a"] = Instance.new("TextLabel", Notification["15"]);
-			Notification["1a"]["TextWrapped"] = true;
-			Notification["1a"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-			Notification["1a"]["TextYAlignment"] = Enum.TextYAlignment.Top;
-			Notification["1a"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-			-- Notification["1a"]["FontFace"] = ;
-			Notification["1a"]["TextSize"] = 14;
-			Notification["1a"]["TextColor3"] = Color3.fromRGB(183, 183, 183);
-			Notification["1a"]["Size"] = UDim2.new(0, 227, 0, 44);
-			Notification["1a"]["Text"] = options.Description;
-			Notification["1a"]["Name"] = [[Description]];
-			Notification["1a"]["Font"] = Enum.Font.Ubuntu;
-			Notification["1a"]["BackgroundTransparency"] = 1;
-			Notification["1a"]["Position"] = UDim2.new(0.04399999976158142, 0, 0.33000001311302185, 0);
-
-			-- StarterGui.ScreenGui.Frame.NotificationHolder.Notification.NotificationDuration
-			Notification["1b"] = Instance.new("Frame", Notification["15"]);
-			Notification["1b"]["BackgroundColor3"] = Color3.fromRGB(26, 26, 26);
-			Notification["1b"]["Size"] = UDim2.new(0, 227, 0, 9);
-			Notification["1b"]["Position"] = UDim2.new(0.04399999976158142, 0, 0.8500000238418579, 0);
-			Notification["1b"]["Name"] = [[NotificationDuration]];
-
-			-- StarterGui.ScreenGui.Frame.NotificationHolder.Notification.NotificationDuration.UICorner
-			Notification["1c"] = Instance.new("UICorner", Notification["1b"]);
+			-- StarterGui.ScreenGui.NotificationHolder.Notification.UICorner
+			Notification["1b"] = Instance.new("UICorner", Notification["1a"]);
 
 
-			-- StarterGui.ScreenGui.Frame.NotificationHolder.Notification.NotificationDuration.UIStroke
-			Notification["1d"] = Instance.new("UIStroke", Notification["1b"]);
-			Notification["1d"]["Color"] = Color3.fromRGB(78, 78, 78);
-			Notification["1d"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+			-- StarterGui.ScreenGui.NotificationHolder.Notification.UIStroke
+			Notification["1c"] = Instance.new("UIStroke", Notification["1a"]);
+			Notification["1c"]["Color"] = Color3.fromRGB(255, 255, 255);
+			Notification["1c"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
 
-			-- StarterGui.ScreenGui.Frame.NotificationHolder.Notification.NotificationDuration.Bar
-			Notification["1e"] = Instance.new("Frame", Notification["1b"]);
-			Notification["1e"]["BackgroundColor3"] = Color3.fromRGB(91, 91, 91);
-			Notification["1e"]["AnchorPoint"] = Vector2.new(1, 0);
-			Notification["1e"]["Size"] = UDim2.new(1, 0, 1, 0);
-			Notification["1e"]["Position"] = UDim2.new(1, 0, 0, 0);
-			Notification["1e"]["Name"] = [[Bar]];
+			-- StarterGui.ScreenGui.NotificationHolder.Notification.Title
+			Notification["1d"] = Instance.new("TextLabel", Notification["1a"]);
+			Notification["1d"]["TextWrapped"] = true;
+			Notification["1d"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+			Notification["1d"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+			-- Notification["1d"]["FontFace"] = ;
+			Notification["1d"]["TextSize"] = 14;
+			Notification["1d"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+			Notification["1d"]["Size"] = UDim2.new(0, 250, 0, 33);
+			Notification["1d"]["Text"] = options.Name;
+			Notification["1d"]["Name"] = [[Title]];
+			Notification["1d"]["Font"] = Enum.Font.Ubuntu;
+			Notification["1d"]["BackgroundTransparency"] = 1;
 
-			-- StarterGui.ScreenGui.Frame.NotificationHolder.Notification.NotificationDuration.Bar.UICorner
-			Notification["1f"] = Instance.new("UICorner", Notification["1e"]);
+			-- StarterGui.ScreenGui.NotificationHolder.Notification.Title.UIPadding
+			Notification["1e"] = Instance.new("UIPadding", Notification["1d"]);
+			Notification["1e"]["PaddingTop"] = UDim.new(0, 1);
+			Notification["1e"]["PaddingRight"] = UDim.new(0, 23);
+			Notification["1e"]["PaddingBottom"] = UDim.new(0, 1);
+			Notification["1e"]["PaddingLeft"] = UDim.new(0, 23);
+
+			-- StarterGui.ScreenGui.NotificationHolder.Notification.Description
+			Notification["1f"] = Instance.new("TextLabel", Notification["1a"]);
+			Notification["1f"]["TextWrapped"] = true;
+			Notification["1f"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+			Notification["1f"]["TextYAlignment"] = Enum.TextYAlignment.Top;
+			Notification["1f"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+			-- Notification["1f"]["FontFace"] = ;
+			Notification["1f"]["TextSize"] = 14;
+			Notification["1f"]["TextColor3"] = Color3.fromRGB(183, 183, 183);
+			Notification["1f"]["Size"] = UDim2.new(0, 227, 0, 44);
+			Notification["1f"]["Text"] = options.Description;
+			Notification["1f"]["Name"] = [[Description]];
+			Notification["1f"]["Font"] = Enum.Font.Ubuntu;
+			Notification["1f"]["BackgroundTransparency"] = 1;
+			Notification["1f"]["Position"] = UDim2.new(0.04399999976158142, 0, 0.33000001311302185, 0);
+
+			-- StarterGui.ScreenGui.NotificationHolder.Notification.NotificationDuration
+			Notification["20"] = Instance.new("Frame", Notification["1a"]);
+			Notification["20"]["BackgroundColor3"] = Color3.fromRGB(26, 26, 26);
+			Notification["20"]["Size"] = UDim2.new(0, 227, 0, 9);
+			Notification["20"]["Position"] = UDim2.new(0.04399999976158142, 0, 0.8500000238418579, 0);
+			Notification["20"]["Name"] = [[NotificationDuration]];
+
+			-- StarterGui.ScreenGui.NotificationHolder.Notification.NotificationDuration.UICorner
+			Notification["21"] = Instance.new("UICorner", Notification["20"]);
+
+
+			-- StarterGui.ScreenGui.NotificationHolder.Notification.NotificationDuration.UIStroke
+			Notification["22"] = Instance.new("UIStroke", Notification["20"]);
+			Notification["22"]["Color"] = Color3.fromRGB(78, 78, 78);
+			Notification["22"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+			-- StarterGui.ScreenGui.NotificationHolder.Notification.NotificationDuration.Bar
+			Notification["23"] = Instance.new("Frame", Notification["20"]);
+			Notification["23"]["BackgroundColor3"] = Color3.fromRGB(91, 91, 91);
+			Notification["23"]["AnchorPoint"] = Vector2.new(1, 0);
+			Notification["23"]["Size"] = UDim2.new(1, 0, 1, 0);
+			Notification["23"]["Position"] = UDim2.new(1, 0, 0, 0);
+			Notification["23"]["Name"] = [[Bar]];
+
+			-- StarterGui.ScreenGui.NotificationHolder.Notification.NotificationDuration.Bar.UICorner
+			Notification["24"] = Instance.new("UICorner", Notification["23"]);
 			
-			Notification["1e"]:TweenSize(
+			Notification["23"]:TweenSize(
 				UDim2.new(0,0,1,0),
 				Enum.EasingDirection.InOut,
 				Enum.EasingStyle.Sine,
 				options.Duration,
 				false
 			)
+			
 			wait(options.Duration + 0.01)
-			Notification["15"]:Destroy()
+			Notification["1a"]:Destroy()
+			
 			return Notification
 		end
-		
-		SmoothDrag(gui["2"])
-		
-		return gui
 	end
+	return gui
 end
 return Library
