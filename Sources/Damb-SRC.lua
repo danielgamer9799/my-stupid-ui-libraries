@@ -229,3 +229,4 @@ function Library:New(options)
 	end
 	return GUI
 end
+return Library
