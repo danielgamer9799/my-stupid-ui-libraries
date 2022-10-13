@@ -269,3 +269,4 @@ function Library:Window(options)
 		return gui
 	end
 end
+return Library
