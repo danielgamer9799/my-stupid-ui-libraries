@@ -1,7 +1,8 @@
 # Damb UI Library Documentation
 ### i literally forgot about the labels being in the source lol
 
-## source for it: ### https://github.com/danielgamer9799/my-stupid-ui-libraries/blob/main/Sources/Damb-SRC.lua
+## source for it
+### https://github.com/danielgamer9799/my-stupid-ui-libraries/blob/main/Sources/Damb-SRC.lua
 
 ## Booting the library
 ```lua
