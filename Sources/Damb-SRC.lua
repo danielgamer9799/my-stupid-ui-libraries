@@ -59,7 +59,7 @@ function Library:NewWindow(options)
 		gui["7"]["BackgroundTransparency"] = 1;
 		gui["7"]["Size"] = UDim2.new(1, 0, 0.8945578336715698, 0);
 		gui["7"]["Selectable"] = false;
-		gui["7"]["ClipsDescendants"] = false;
+		gui["7"]["ClipsDescendants"] = true;
 		gui["7"]["ScrollBarThickness"] = 0;
 		gui["7"]["Position"] = UDim2.new(0, 0, 0.10544217377901077, 0);
 		gui["7"]["Name"] = [[TabHolder]];
