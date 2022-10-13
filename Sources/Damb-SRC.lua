@@ -79,7 +79,7 @@ function Library:New(options)
 	end
 	function GUI:MakeButton(options)
 
-		local Button = {};
+		local Button = {}
 
 		-- StarterGUI[.ScreenGUI[.Frame.TabHolder.Button
 		Button["9"] = Instance.new("Frame", GUI["7"]);
