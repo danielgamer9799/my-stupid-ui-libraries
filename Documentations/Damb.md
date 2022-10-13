@@ -3,11 +3,13 @@
 ## Source of the library
 ### yeah ignore that stuff
 ```lua
-local DambLibrary =
+local DambLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/danielgamer9799/my-stupid-ui-libraries/main/Sources/Damb-SRC.lua"))()
 ```
 ## Creating The Window
 ```lua
-
+local Window = DambLibrary:New({
+   Name = "Damb UI Library"
+})
 ```
 ## Creating A Button
 ```lua
