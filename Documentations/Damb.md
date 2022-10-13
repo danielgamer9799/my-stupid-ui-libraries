@@ -10,7 +10,7 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/danie
 ```
 ## Creating The Window
 ```lua
-local Window = Library:Window({
+local Window = Library:NewWindow({
    Name = "Damb UI Library"
 })
 ```
