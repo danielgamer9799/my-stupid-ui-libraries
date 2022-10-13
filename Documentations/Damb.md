@@ -1,6 +1,6 @@
 # Damb UI Library Documentation
 
-## Source of the library
+## Booting the library
 ```lua
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/danielgamer9799/my-stupid-ui-libraries/main/Sources/Damb-SRC.lua"))()
 ```
