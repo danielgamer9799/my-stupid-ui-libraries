@@ -1,12 +1,15 @@
 local Library = {}
 
 function Library:NewWindow(options)
-	--all the useless stuff
+	--all the useless stuft
+	
+	
 	local gui = {}
 	do
 		-- StarterGui.ScreenGui
 		gui["1"] = Instance.new("ScreenGui", game:GetService("RunService"):IsStudio() and game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui") or game.CoreGui);
 		gui["1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling;
+		gui["1"]["Name"] = [[Damb]]
 
 		-- StarterGui.ScreenGui.Frame
 		gui["2"] = Instance.new("Frame", gui["1"]);
