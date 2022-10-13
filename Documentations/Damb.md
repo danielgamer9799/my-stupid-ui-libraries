@@ -1,6 +1,6 @@
 # Damb UI Library Documentation
 
-## Booting the lib
+## Booting the library
 ```lua
 local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/danielgamer9799/my-stupid-ui-libraries/main/Sources/Damb-SRC"))()
 ```
@@ -27,3 +27,4 @@ local Notification = Window:MakeNotification({
    Duration = 10
 })
 ```
+# more features coming soon!!1!!11!
