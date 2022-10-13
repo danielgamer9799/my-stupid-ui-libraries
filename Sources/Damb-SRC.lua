@@ -64,7 +64,7 @@ function Library:Window(options)
 		gui["8"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
 		
 		-- StarterGui.ScreenGui.Frame.NotificationHolder
-		gui["14"] = Instance.new("Frame", gui["2"]);
+		gui["14"] = Instance.new("Frame", gui["1"]);
 		gui["14"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
 		gui["14"]["BackgroundTransparency"] = 1;
 		gui["14"]["Size"] = UDim2.new(1.3041237592697144, 0, 1.9149659872055054, 0);
