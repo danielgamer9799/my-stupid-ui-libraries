@@ -3,7 +3,10 @@ local Library = {}
 function Library:NewWindow(options)
 	--all the useless stuft
 	
-	
+	if game.CoreGui:FindFirstChild("Damb") then
+	    game.CoreGui:FindFirstChild("Damb"):Destroy()
+	end
+	wait(0.1)
 	local gui = {}
 	do
 		-- StarterGui.ScreenGui
