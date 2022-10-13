@@ -27,4 +27,9 @@ local Notification = Window:CreateNotification({
    Duration = 10
 })
 ```
+```lua
+local Label = Window:CreateLabel({
+   Name = "Label"
+})
+```
 # more features coming soon!!1!!11!
