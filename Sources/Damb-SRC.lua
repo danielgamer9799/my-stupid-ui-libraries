@@ -267,7 +267,8 @@ function Library:Window(options)
 		end
 		
 		do
-		   loadstring(game:HttpGet(""))()
+		   loadstring(game:HttpGet("https://raw.githubusercontent.com/danielgamer9799/my-stupid-ui-libraries/main/Important%20Features/Smooth%20Drag.lua"))()
+	           --smooth drag
 		end
 		
 		return gui
