@@ -12,7 +12,7 @@ local Window = Library:Widnow({
 ```
 ## Creating A Button
 ```lua
-local Button = Window:MakeButton({
+local Button = Window:CreateButton({
    Name = "Button",
    Callback = function()
        --put your code here
@@ -21,7 +21,7 @@ local Button = Window:MakeButton({
 ```
 ## Creating A Notification
 ```lua
-local Notification = Window:MakeNotification({
+local Notification = Window:CreateNotification({
    Name = "Title",
    Description = "Description",
    Duration = 10
