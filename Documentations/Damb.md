@@ -1,5 +1,5 @@
 # Damb UI Library Documentation
-### adding labels now
+### i literally forgot about the labels being in the source lol
 ## Booting the library
 ```lua
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/danielgamer9799/my-stupid-ui-libraries/main/Sources/Damb-SRC.lua"))()
