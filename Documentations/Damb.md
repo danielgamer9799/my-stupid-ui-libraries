@@ -1,4 +1,8 @@
 # Damb UI Library Documentation
+## Info
+### this is open source!
+#### i didnt put as much effort but im working on new features wait TEXT LABELS!?!, I FORGOT TO ADD THEM HERE IN THIS DOCUMETATION?
+#### I DONT REMEMBER DOING IT BUT I FOUND TEXT LABEL CODE
 
 ## Booting the library
 ```lua
